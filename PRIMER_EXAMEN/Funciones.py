@@ -97,116 +97,117 @@ def mostrar_promedio_menor(array_nombres:list, matriz_puntajes:list, minimo:floa
         avisar_error_promedio_menor(minimo)
     return bandera_menor
 
-# opcion 6 - promedio de cada jurado        
-def mostrar_promedio_por_jurado(matriz_puntajes: list) -> int | float:
-    """MUESTRA EL PROMEDIO DE ACUERDO AL JURADO
+# opcion 6 - promedio de cada jurado
+def calcular_promedio_jurado(matriz_puntajes: list, indice_jurado: int) -> float:
+    """_summary_
 
     Args:
-        matriz_puntajes (list): MATRIZ DE LOS PUNTAJES
+        matriz_puntajes (list): _description_
+        indice_jurado (int): _description_
 
     Returns:
-        int | float: EL PROMEDIO DE LOS PUNTAJES OTORGADOS
+        float: _description_
     """
-    promedio = 0
-    cantidad_jueces = len(matriz_puntajes[0])        # columnas
-    cantidad_participantes = len(matriz_puntajes)    # filas
-    for juez in range(cantidad_jueces):
-        suma = 0
-        for participante in range(cantidad_participantes):
-            suma += matriz_puntajes[participante][juez]
-        promedio = suma / cantidad_participantes
-        print(f"\n    {juez +1}° JURADO:")         
-        print(f"    + PROMEDIO: {promedio:}")
+    suma = 0
+    cantidad = len(matriz_puntajes)
+    for i in range(cantidad):
+        suma += matriz_puntajes[i][indice_jurado]
+        promedio = suma / cantidad
     return promedio
-        
+
+def mostrar_promedio_por_jurado(matriz_puntajes: list) -> None:
+    """_summary_
+
+    Args:
+        matriz_puntajes (list): _description_
+    """
+    cantidad_jueces = len(matriz_puntajes[0])
+    for j in range(cantidad_jueces):
+        promedio = calcular_promedio_jurado(matriz_puntajes, j)
+        print(f"\n    {j + 1}° JURADO:")
+        print(f"    + PROMEDIO: {promedio}")
+
 # opcion 7 - jurado mas estricto
 def mostrar_jurado_estricto(array_nombres: list, matriz_puntajes: list) -> float:
-    """MUESTRA EL JURADO QUE PONE NOTAS MAS BAJAS
+    """_summary_
 
     Args:
-        array_nombres (list): ARRAY DE NOMBRES
-        matriz_puntajes (list): MATRIZ DE LOS PUNTAJES
+        array_nombres (list): _description_
+        matriz_puntajes (list): _description_
 
     Returns:
-        float: PROMEDIO DEL JURADO QUE MENOS PUNTUA
+        float: _description_
     """
-    bandera_Primero = False
-    promedio_bajo = 0
-    jurado_bajo = 0
-    cantidad_jurados = len(matriz_puntajes[0])  # cantidad de columnas
-    cantidad_concursantes = len(matriz_puntajes)
-    for jurado in range(cantidad_jurados):  # recorremos por jurado (columna)
-        suma = 0
-        for concursante in range(cantidad_concursantes):  # recorremos filas
-            suma += matriz_puntajes[concursante][jurado]
-        promedio = suma / cantidad_concursantes
-        if bandera_Primero == False or promedio < promedio_bajo:
-            bandera_Primero = True
-            promedio_bajo = promedio
-            jurado_bajo = jurado  # índice, no le sumamos 1 todavía
-    print(f"\n    {jurado_bajo + 1}° JUEZ:")         
-    print(f"    + PROMEDIO: {promedio_bajo}")
-    return promedio
-    
+    cantidad_jueces = len(matriz_puntajes[0])
+    promedio_mas_bajo = calcular_promedio_jurado(matriz_puntajes, 0)
+    jurado_mas_estricto = 0
+
+    for j in range(1, cantidad_jueces):
+        promedio = calcular_promedio_jurado(matriz_puntajes, j)
+        if promedio < promedio_mas_bajo:
+            promedio_mas_bajo = promedio
+            jurado_mas_estricto = j
+
+    print(f"\n    {jurado_mas_estricto + 1}° JUEZ:")
+    print(f"    + PROMEDIO: {promedio_mas_bajo}")
+    return promedio_mas_bajo
+
 # opcion 8 - jurado mas generoso
 def mostrar_jurado_generoso(array_nombres: list, matriz_puntajes: list) -> float:
-    """MUESTRA EL JURADO QUE PONE NOTAS MAS ALTAS
+    """_summary_
 
     Args:
-        array_nombres (list): ARRAY DE LOS NOMBRES
-        matriz_puntajes (list): MATRIZ DE LOS PUNTAJES
+        array_nombres (list): _description_
+        matriz_puntajes (list): _description_
 
     Returns:
-        float: PROMEDIO DEL JURADO QUE MAS PUNTUA
+        float: _description_
     """
-    bandera_Primero = False
-    promedio_alto = 0
-    jurado_alto = 0
-    cantidad_jurados = len(matriz_puntajes[0])  # cantidad de columnas
-    cantidad_concursantes = len(matriz_puntajes)
-    for jurado in range(cantidad_jurados):  # recorremos por jurado (columna)
-        suma = 0
-        for concursante in range(cantidad_concursantes):  # recorremos filas
-            suma += matriz_puntajes[concursante][jurado]
-        promedio = suma / cantidad_concursantes
-        if bandera_Primero == False or promedio > promedio_alto:
-            bandera_Primero = True
-            promedio_alto = promedio
-            jurado_alto = jurado  # índice, no le sumamos 1 todavía
-    print(f"\n    {jurado_alto + 1}° JUEZ:")         
-    print(f"    + PROMEDIO: {promedio_alto}")
-    return promedio 
-           
+    cantidad_jueces = len(matriz_puntajes[0])
+    promedio_mas_alto = calcular_promedio_jurado(matriz_puntajes, 0)
+    jurado_mas_generoso = 0
+
+    for j in range(1, cantidad_jueces):
+        promedio = calcular_promedio_jurado(matriz_puntajes, j)
+        if promedio > promedio_mas_alto:
+            promedio_mas_alto = promedio
+            jurado_mas_generoso = j
+
+    print(f"\n    {jurado_mas_generoso + 1}° JUEZ:")
+    print(f"    + PROMEDIO: {promedio_mas_alto}")
+    return promedio_mas_alto
+
 # opcion 9 - participantes con puntajes iguales
 def mostrar_participantes_con_puntajes_iguales(array_nombres: list, matriz_puntajes: list) -> bool:
-    """MUESTRA LOS PARTICIPANTES CON PUNTAJES IGUALES ENTRE LOS 3 JUECES
+    """_summary_
 
     Args:
-        array_nombres (list): ARRAY DE NOMBRES
-        matriz_puntajes (list): MATRIZ DE PUNTAJES
+        array_nombres (list): _description_
+        matriz_puntajes (list): _description_
 
     Returns:
-        bool: SI ENCUENTRA COINCIDENCIAS ENVIA TRUE DE LO CONTRARIO FALSE
+        bool: _description_
     """
-    bandera_encontrado = False
-    limite = min(len(array_nombres), len(matriz_puntajes))
-    for i in range(limite):
+    bandera = False
+
+    for i in range(len(array_nombres)):
         fila = matriz_puntajes[i]
-        if len(fila) == 0:
-            continue
-        # Verificar si los tres puntajes son exactamente iguales
-        if fila[0] == fila[1] == fila[2]:
-            promedio = promediar_participante(matriz_puntajes, i)
+        if len(fila) == 3 and fila[0] == fila[1] == fila[2]:
+            suma = 0
+            for j in range(3):
+                suma += fila[j]
+            promedio = suma / 3
 
             print(f"\n    {array_nombres[i]}")
-            print("    - PUNTAJES:", end = " ")
-            for nota in fila:
-                print(nota, end=" ")
-            print(f"\n    + PROMEDIO: {promedio}")
-            bandera_encontrado = True
-    if not bandera_encontrado:
+            print("    - PUNTAJES:", fila[0], fila[1], fila[2])
+            print(f"    + PROMEDIO: {promedio}")
+            bandera = True
+
+    if not bandera:
         avisar_error_participantes_con_puntajes_iguales()
-    return bandera_encontrado
+
+    return bandera
+
 
 
 # opcion 10 - buscando participantes por nombre
