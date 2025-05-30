@@ -21,7 +21,7 @@ def mostrar_un_solo_participante(matriz_puntajes:list, indice:int) -> None:
     for j in range(len(matriz_puntajes[indice])):
         print(f"    - PUNTAJE {j + 1}° JUEZ: {matriz_puntajes[indice][j]}")
 
-def mostrar_todos_los_participantes(array_nombres: list, matriz_puntajes: list) -> None:
+def mostrar_todos_los_participantes(array_nombres:list, matriz_puntajes:list) -> None:
     """MUESTRA TODOS LOS PARTICIPANTES
 
     Args:
@@ -35,7 +35,7 @@ def mostrar_todos_los_participantes(array_nombres: list, matriz_puntajes: list) 
         mostrar_un_solo_participante(matriz_puntajes, i)
         print(f"    + PROMEDIO: {promiedio}\n")
         
-def sumar_notas_participante(matriz_puntajes: list, indice_participante: int) -> int:
+def sumar_notas_participante(matriz_puntajes:list, indice_participante:int) -> int:
     """SUMA LA NOTAS DEL PARTICIPANTE
 
     Args:
@@ -98,7 +98,7 @@ def mostrar_promedio_menor(array_nombres:list, matriz_puntajes:list, minimo:floa
     return bandera_menor
 
 # opcion 6 - promedio de cada jurado
-def calcular_promedio_jurado(matriz_puntajes: list, indice_jurado: int) -> float:
+def calcular_promedio_jurado(matriz_puntajes:list, indice_jurado:int) -> float:
     """CALCULA EL PROMEDIO DE PUNTAJES POR JURADO
 
     Args:
@@ -115,7 +115,7 @@ def calcular_promedio_jurado(matriz_puntajes: list, indice_jurado: int) -> float
         promedio = suma / cantidad
     return promedio
 
-def mostrar_promedio_por_jurado(matriz_puntajes: list) -> None:
+def mostrar_promedio_por_jurado(matriz_puntajes:list) -> None:
     """MUESTRA EL PROMEDIO POR JURADO
 
     Args:
@@ -128,7 +128,7 @@ def mostrar_promedio_por_jurado(matriz_puntajes: list) -> None:
         print(f"    + PROMEDIO: {promedio}")
 
 # opcion 7 - jurado mas estricto
-def mostrar_jurado_estricto(array_nombres: list, matriz_puntajes: list) -> float:
+def mostrar_jurado_estricto(array_nombres:list, matriz_puntajes:list) -> float:
     """CALCULA Y MUESTRA EL JURADO MAS ESTRICTO
 
     Args:
@@ -151,7 +151,7 @@ def mostrar_jurado_estricto(array_nombres: list, matriz_puntajes: list) -> float
     return promedio_mas_bajo
 
 # opcion 8 - jurado mas generoso
-def mostrar_jurado_generoso(array_nombres: list, matriz_puntajes: list) -> float:
+def mostrar_jurado_generoso(array_nombres:list, matriz_puntajes:list) -> float:
     """CALCULA Y MUESTRA EL JURADO MAS GENEROSO
 
     Args:
@@ -174,7 +174,7 @@ def mostrar_jurado_generoso(array_nombres: list, matriz_puntajes: list) -> float
     return promedio_mas_alto
 
 # opcion 9 - participantes con puntajes iguales
-def mostrar_participantes_con_puntajes_iguales(array_nombres: list, matriz_puntajes: list) -> bool:
+def mostrar_participantes_con_puntajes_iguales(array_nombres:list, matriz_puntajes:list) -> bool:
     """MUESTRA LOS PARTICIPANTES QUE PUNTUAN IGUAL ENTRE LOS DIFERENTES JUECES
 
     Args:
@@ -203,7 +203,7 @@ def mostrar_participantes_con_puntajes_iguales(array_nombres: list, matriz_punta
     return bandera
 
 # opcion 10 - buscando participantes por nombre
-def buscar_participante(array_nombres: list, matriz_puntajes: list) -> bool:
+def buscar_participante(array_nombres:list, matriz_puntajes:list) -> bool:
     """BUSCA COINCIDENCIAS ENTRE LOS NOMBRES
 
     Args:
