@@ -215,15 +215,22 @@ def buscar_participante(array_nombres: list, matriz_puntajes: list) -> bool:
     """
     nombre_ingresado = convertir_mayuscula(input("     INGRESE EL NOMBRE DEL PARTICIPANTE: "))
     bandera_encontrado = False
+    # Recorre la lista de nombres con enumerate para obtener índice (i) y nombre actual
     for i, nombre_actual in enumerate(array_nombres):
+        # Convierte el nombre actual a mayúsculas para comparar 
         if convertir_mayuscula(nombre_actual) == nombre_ingresado:
             bandera_encontrado = True
             print(f"\n     PARTICIPANTE ENCONTRADO:")
             print(f"     - NOMBRE: {array_nombres[i]}")
             print(f"     - PUNTAJES:")
+             # Recorre los puntajes del participante con enumerate para obtener índice del juez y su nota
             for j, puntaje in enumerate(matriz_puntajes[i]):
                 print(f"     - JUEZ {j +1}: {puntaje}")
-            promedio = sum(matriz_puntajes[i]) / len(matriz_puntajes[i])
+            # Calcular el promedio
+            suma = 0
+            for nota in matriz_puntajes[i]:
+                suma += nota  # acumular las notas en una variable
+            promedio = suma / len(matriz_puntajes[i])  # se divide por la cantidad de notas
             print(f"     + PROMEDIO: {promedio}")
             break
     if not bandera_encontrado:
