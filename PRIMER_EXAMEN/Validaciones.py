@@ -7,6 +7,7 @@
 # importo funcion
 from Print import *
 
+
 # opciones / 2 ingreso puntajes
 # FUNCION GENERAL 
 # validacion de caracter entero

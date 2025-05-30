@@ -7,6 +7,7 @@ from Inputs import *
 from Print import * 
 from Funciones import *
 
+
 # inicializo banderas para mostrar y entrar a opciones del menu
 bandera_nombres_cargados = False
 bandera_notas_cargadas = False

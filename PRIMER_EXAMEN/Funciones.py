@@ -30,7 +30,7 @@ def mostrar_todos_los_participantes(array_nombres: list, matriz_puntajes: list) 
     """
     for i in range(len(array_nombres)):
         nombre = array_nombres[i]
-        promiedio = promedio_participante(matriz_puntajes, i)
+        promiedio = promediar_participante(matriz_puntajes, i)
         print(f"    NOMBRE DEL PARTICIPANTE: {nombre}")
         mostrar_un_solo_participante(matriz_puntajes, i)
         print(f"    + PROMEDIO: {promiedio}\n")
@@ -51,7 +51,7 @@ def sumar_notas_participante(matriz_puntajes: list, indice_participante: int) ->
             suma += nota
     return suma
 
-def promedio_participante(matriz_puntajes: list, indice_participante: int) -> float:
+def promediar_participante(matriz_puntajes: list, indice_participante: int) -> float:
     """SACA EL PROMEDIO DEL PUNTAJE DEL PARTICIPANTE
 
     Args:
@@ -196,7 +196,7 @@ def mostrar_participantes_con_puntajes_iguales(array_nombres: list, matriz_punta
             continue
         # Verificar si los tres puntajes son exactamente iguales
         if fila[0] == fila[1] == fila[2]:
-            promedio = promedio_participante(matriz_puntajes, i)
+            promedio = promediar_participante(matriz_puntajes, i)
 
             print(f"\n    {array_nombres[i]}")
             print("    - PUNTAJES:", end = " ")
