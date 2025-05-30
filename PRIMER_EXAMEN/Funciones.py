@@ -99,14 +99,14 @@ def mostrar_promedio_menor(array_nombres:list, matriz_puntajes:list, minimo:floa
 
 # opcion 6 - promedio de cada jurado
 def calcular_promedio_jurado(matriz_puntajes: list, indice_jurado: int) -> float:
-    """_summary_
+    """CALCULA EL PROMEDIO DE PUNTAJES POR JURADO
 
     Args:
-        matriz_puntajes (list): _description_
-        indice_jurado (int): _description_
+        matriz_puntajes (list): MATRIZ DE LOS PUNTAJES
+        indice_jurado (int): INDICE DEL JURADO
 
     Returns:
-        float: _description_
+        float: PROMEDIO PUNTAJE
     """
     suma = 0
     cantidad = len(matriz_puntajes)
@@ -116,10 +116,10 @@ def calcular_promedio_jurado(matriz_puntajes: list, indice_jurado: int) -> float
     return promedio
 
 def mostrar_promedio_por_jurado(matriz_puntajes: list) -> None:
-    """_summary_
+    """MUESTRA EL PROMEDIO POR JURADO
 
     Args:
-        matriz_puntajes (list): _description_
+        matriz_puntajes (list): MATRIZ DE LOS PUNTAJES
     """
     cantidad_jueces = len(matriz_puntajes[0])
     for j in range(cantidad_jueces):
@@ -129,67 +129,62 @@ def mostrar_promedio_por_jurado(matriz_puntajes: list) -> None:
 
 # opcion 7 - jurado mas estricto
 def mostrar_jurado_estricto(array_nombres: list, matriz_puntajes: list) -> float:
-    """_summary_
+    """CALCULA Y MUESTRA EL JURADO MAS ESTRICTO
 
     Args:
-        array_nombres (list): _description_
-        matriz_puntajes (list): _description_
+        array_nombres (list): ARRAY DE LOS NOMBRES
+        matriz_puntajes (list): MATRIZ DE LOS PUNTAJES
 
     Returns:
-        float: _description_
+        float: PROMEDIO DEL JURADO QUE MENOR PUNTUA
     """
     cantidad_jueces = len(matriz_puntajes[0])
     promedio_mas_bajo = calcular_promedio_jurado(matriz_puntajes, 0)
     jurado_mas_estricto = 0
-
     for j in range(1, cantidad_jueces):
         promedio = calcular_promedio_jurado(matriz_puntajes, j)
         if promedio < promedio_mas_bajo:
             promedio_mas_bajo = promedio
             jurado_mas_estricto = j
-
     print(f"\n    {jurado_mas_estricto + 1}° JUEZ:")
     print(f"    + PROMEDIO: {promedio_mas_bajo}")
     return promedio_mas_bajo
 
 # opcion 8 - jurado mas generoso
 def mostrar_jurado_generoso(array_nombres: list, matriz_puntajes: list) -> float:
-    """_summary_
+    """CALCULA Y MUESTRA EL JURADO MAS GENEROSO
 
     Args:
-        array_nombres (list): _description_
-        matriz_puntajes (list): _description_
+        array_nombres (list): ARRAY DE NOMBRES
+        matriz_puntajes (list): MATRIZ DE PUNTAJES
 
     Returns:
-        float: _description_
+        float: PROMEDIO DEL JUEZ QUE PUNTUA MAS ALTO
     """
     cantidad_jueces = len(matriz_puntajes[0])
     promedio_mas_alto = calcular_promedio_jurado(matriz_puntajes, 0)
     jurado_mas_generoso = 0
-
     for j in range(1, cantidad_jueces):
         promedio = calcular_promedio_jurado(matriz_puntajes, j)
         if promedio > promedio_mas_alto:
             promedio_mas_alto = promedio
             jurado_mas_generoso = j
-
     print(f"\n    {jurado_mas_generoso + 1}° JUEZ:")
     print(f"    + PROMEDIO: {promedio_mas_alto}")
     return promedio_mas_alto
 
 # opcion 9 - participantes con puntajes iguales
 def mostrar_participantes_con_puntajes_iguales(array_nombres: list, matriz_puntajes: list) -> bool:
-    """_summary_
+    """MUESTRA LOS PARTICIPANTES QUE PUNTUAN IGUAL ENTRE LOS DIFERENTES JUECES
 
     Args:
-        array_nombres (list): _description_
-        matriz_puntajes (list): _description_
+        array_nombres (list): ARRAY DE NOMBRES
+        matriz_puntajes (list): MATRIZ DE PUNTAJES
 
     Returns:
-        bool: _description_
+        bool: BANDERA TRUE SI HAY USUARIO CON PUNTAJES IGUALES ENTRE LOS JUECES
     """
     bandera = False
-
     for i in range(len(array_nombres)):
         fila = matriz_puntajes[i]
         if len(fila) == 3 and fila[0] == fila[1] == fila[2]:
@@ -205,10 +200,7 @@ def mostrar_participantes_con_puntajes_iguales(array_nombres: list, matriz_punta
 
     if not bandera:
         avisar_error_participantes_con_puntajes_iguales()
-
     return bandera
-
-
 
 # opcion 10 - buscando participantes por nombre
 def buscar_participante(array_nombres: list, matriz_puntajes: list) -> bool:
